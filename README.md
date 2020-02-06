@@ -1,12 +1,10 @@
-# oozie-jobs
-
 # Oozie Sample Job generator has two phases:
 
 1. Generation of Job Configs ( Property File, Workflow, Coordinnator and Other resources needed)
 
 2. Deploy app on Oozie
 
-#How to Run: ( With Commands) 
+How to Run: ( With Commands) 
 
 Step 1:
 
