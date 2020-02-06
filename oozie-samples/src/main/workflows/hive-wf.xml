@@ -1,0 +1,18 @@
+<workflow-app xmlns="uri:oozie:workflow:0.2" name="hive-wf">
+    <start to="hive-node"/>
+    <action name="hive-node">
+        <hive xmlns="uri:oozie:hive-action:0.2">
+           <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <script>${script}</script>
+            <param>INPUT_TABLE=SampleTable</param>
+            <file>${scriptLoc}</file>
+        </hive>
+        <ok to="end"/>
+        <error to="fail"/>
+    </action>
+    <kill name="fail">
+        <message>Hive failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
