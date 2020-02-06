@@ -8,14 +8,14 @@ How to Run: ( With Commands)
 
 Step 1:
 
-Usage: ./generateOozieJobConfigs.sh -c <clustername> -u <ambari-url/CM> -w <workflow type> -m <otherComponent> -k <y|n> -f <frenquency> -s <startdate> -e <enddate> -o <oozie-url>
-	-c Cluster name
-	-a ambari-url (Optional)
-	-w workflow type
-	-m other component involved (Optional)
-	-k is cluster secure? (Optional)
-	-f frequency for coordinator (Optional)
-	-s start date for coordinator (Optional)
+Usage: ./generateOozieJobConfigs.sh -c <clustername> -u <ambari-url/CM> -w <workflow type> -m <otherComponent> -k <y|n> -f <frenquency> -s <startdate> -e <enddate> -o <oozie-url> \
+	-c Cluster name\
+	-a ambari-url (Optional)\
+	-w workflow type\
+	-m other component involved (Optional)\
+	-k is cluster secure? (Optional)\
+	-f frequency for coordinator (Optional)\
+	-s start date for coordinator (Optional)\
 	-e end date for coordinator (Optional)
     
 Some of parameters are optional. Step1 will generate script "deploy.sh"
