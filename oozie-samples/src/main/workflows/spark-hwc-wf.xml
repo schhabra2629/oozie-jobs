@@ -1,0 +1,22 @@
+<workflow-app name="SparkPOCTest" xmlns="uri:oozie:workflow:0.4">
+</credentials>
+<start to='spark-hwc' />
+<action name="spark-hwc">
+<spark xmlns="uri:oozie:spark-action:0.2">
+<job-tracker>${jobTracker}</job-tracker>
+<name-node>${nameNode}</name-node>
+<master>yarn</master>
+<mode>cluster</mode>
+<name>spark-hwc</name>
+<class>com.hwx.HWCSecuredDemo</class>
+<jar>${resourceLoc}</jar>
+<spark-opts>--jars ${resourceLoc},${hwcJarLoc}  --conf spark.hadoop.hive.llap.daemon.service.hosts=@llap0 --conf spark.sql.hive.hiveserver2.jdbc.url="${jdbcUrl}" --conf spark.datasource.hive.warehouse.load.staging.dir="/tmp" --conf spark.datasource.hive.warehouse.metastoreUri="${thriftUrl}" --conf spark.yarn.queue=default</spark-opts>
+</spark>
+<ok to="end"/>
+<error to="fail"/>
+</action>
+<kill name="fail">
+<message>Workflow is Failed! message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+</kill>
+<end name="end"/>
+</workflow-app>
