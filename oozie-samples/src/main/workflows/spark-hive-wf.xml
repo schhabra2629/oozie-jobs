@@ -1,0 +1,20 @@
+<workflow-app xmlns='uri:oozie:workflow:0.5' name='SparkHive'>
+<start to='spark-hive'/>
+  <action name='spark-node'>
+    <spark xmlns="uri:oozie:spark-action:0.1">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>${nameNode}</name-node>
+      <master>${master}</master>
+      <name>spark-hive</name>
+      <class>${class}</class>
+      <jar>${jarName}</jar>
+      <spark-opts>--class ${class} --files ${jarLoc}</spark-opts>
+    </spark>
+    <ok to="end" />
+    <error to="fail" />
+  </action>
+  <kill name="fail">
+    <message>Workflow failed, error message [${wf:errorMessage(wf:lastErrorNode())}]</message>
+  </kill>
+  <end name='end' />
+</workflow-app>
