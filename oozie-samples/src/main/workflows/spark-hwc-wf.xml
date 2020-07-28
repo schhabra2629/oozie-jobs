@@ -1,5 +1,4 @@
 <workflow-app name="SparkPOCTest" xmlns="uri:oozie:workflow:0.4">
-</credentials>
 <start to='spark-hwc' />
 <action name="spark-hwc">
 <spark xmlns="uri:oozie:spark-action:0.2">
